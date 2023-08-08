@@ -1,6 +1,6 @@
 from django.test import TestCase
-from serializers import ClassroomSerializer
-from models import Classroom
+from classes.serializers import ClassroomSerializer
+from classes.models import Classroom
 
 
 class ClassroomSerializerTest(TestCase):
