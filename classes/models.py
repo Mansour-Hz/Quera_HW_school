@@ -6,4 +6,11 @@ class Classroom(models.Model):
     name = models.CharField(max_length=50)
     department = models.CharField(max_length=50, default='main')
     area = models.DecimalField(max_digits=5, decimal_places=2)
-    id = models.BigAutoField(primary_key=True)
+
+
+    def __str__(self):
+        return self.name
+    
+
+    class Meta:
+        app_label  = 'classes'
