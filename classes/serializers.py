@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Classroom
 
+
 # Classroom Serializer
 class ClassroomSerializer(serializers.ModelSerializer):
     capacity = serializers.IntegerField(required=False, min_value=5)

@@ -1,5 +1,4 @@
 import subprocess
-
 from django.test import TestCase
 
 
