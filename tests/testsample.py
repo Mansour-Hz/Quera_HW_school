@@ -29,7 +29,7 @@ class TestAll(TestCase):
     SERIALIZERS_PATH = "classes/serializers.py"
     TESTS_PATH = "classes/tests.py"
 
-    @copy_content("classes/temp_tests_file.py", TESTS_PATH)
+    @copy_content("classes/test_file.py", TESTS_PATH)
     def setUp(self):
         empty_file(self.SERIALIZERS_PATH)
 

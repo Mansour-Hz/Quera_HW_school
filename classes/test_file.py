@@ -44,8 +44,8 @@ class ClassroomSerializerTest(TestCase):
     def test_area_field_content(self):
         data = self.serializer.data
 
-        print(data['area'], type(data['area']))
-        print(self.classroom_attributes['area'], type(self.classroom_attributes['area']))
+        # print(data['area'], type(data['area']))
+        # print(self.classroom_attributes['area'], type(self.classroom_attributes['area']))
 
         self.assertEqual(data['area'], self.classroom_attributes['area'])
 
@@ -57,7 +57,7 @@ class ClassroomSerializerTest(TestCase):
         self.assertTrue(serializer.is_valid())
 
     def test_area_lower_bound(self):
-        self.classroom_attributes['area'] = -5
+        self.classroom_attributes['area'] = -2
 
         serializer = ClassroomSerializer(data=self.classroom_attributes)
 
