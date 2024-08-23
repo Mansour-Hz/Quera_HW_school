@@ -1,19 +1,20 @@
 import json
-import fnmatch
 import os
 from typing import Optional
 
 
 class Book:
-    def __init__(self, title, author, year):
+    def __init__(self, title: str, author: str, year: int):
         self.title = title
         self.author = author
         self.year = year
+
 
 class File:
     def __init__(self, file_name="", file_path="") -> None:
         self.fileName = file_name
         self.filePath = file_path
+
 
 class Library:
     def __init__(self):
@@ -42,7 +43,7 @@ class Library:
         print(f"book '{title}' removed.")
 
     def update_book(self, old_title: str, new_title: Optional[str] = None,
-                     new_author: Optional[str] =None, new_year: Optional[str] =None):
+                    new_author: Optional[str] = None, new_year: Optional[str] = None):
         for book in self.books:
             if book.title == old_title:
                 if new_title:
@@ -55,7 +56,7 @@ class Library:
                 return
         print("Book was not found")
 
-    def save_to_file(self, filename:str):
+    def save_to_file(self, filename: str):
         newFileName = os.path.splitext(filename)[0] + '.txt'
         with open(newFileName, 'w') as file:
             json.dump([book.__dict__ for book in self.books], file)
@@ -68,24 +69,3 @@ class Library:
             print("Library restored.")
         except FileNotFoundError:
             print("File was not found.")
-
-
-def heartPrinter():
-    for row in range(6):
-        for col in range(7):
-            if (row == 0 and col % 3 != 0) or (row == 1 and col % 3 == 0) or (row - col == 2) or (row + col == 8):
-                print("*", end="")
-            else:
-                print(" ", end="")
-        print()
-
-def findAllTextFiles():
-
-    current_dir = os.getcwd()
-    txt_files = []
-
-    for file in os.listdir(current_dir):
-        if fnmatch.fnmatch(file, '*.txt'):
-            txt_files.append(file)
-
-    return txt_files
