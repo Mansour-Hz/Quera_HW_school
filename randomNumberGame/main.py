@@ -100,11 +100,12 @@ def play_round(stdscr, difficulty):
             else:
                 stop_event.set()
                 time_taken = time.time() - start_time
-                stdscr.addstr(6, 1, f"Congratulations! You guessed the number in {
-                              guesses} attempts and {time_taken:.2f} seconds.")
+                message = f"Congratulations! You guessed the number in {
+                    guesses} attempts and {time_taken:.2f} seconds."
                 stdscr.refresh()
-                time.sleep(1.5)
-                return max(0, int((time_limit - time_taken) * 10 + (upper - lower) / guesses))
+                stageScore = max(
+                    0, int((time_limit - time_taken) * 10 + (upper - lower) / guesses))
+                return message, stageScore
 
             if guesses % 5 == 0:
                 stdscr.addstr(7, 1, f"Hint: The number is {get_hint(number)}.")
@@ -125,13 +126,15 @@ def play_game(stdscr):
         stdscr.addstr(0, 1, f"--- Stage {stage} ---", curses.color_pair(1))
         stdscr.refresh()
         time.sleep(2)
-        score = play_round(stdscr, stage)
+        message, score = play_round(stdscr, stage)
         if score == 0:
             finish_game(stdscr, "lost")
         total_score += score
         stdscr.clear() # Test
-        stdscr.addstr(8, 1, f"Stage score: {score}")
-        stdscr.addstr(9, 1, f"Total score: {total_score}")
+        if (stage!=4):
+            stdscr.addstr(3, 1, message, curses.color_pair(3))
+            stdscr.addstr(4, 1, f"Stage score: {score}", curses.color_pair(12))
+            stdscr.addstr(5, 1, f"Total score: {total_score}", curses.color_pair(19))
         stdscr.refresh()
         time.sleep(2)
 
