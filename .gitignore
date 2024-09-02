@@ -1,4 +1,5 @@
 .venv/
+library/src/__pycache__/
 library/__pycache__/
 randomNumberGame/__pycache__/
 */*.pyc
