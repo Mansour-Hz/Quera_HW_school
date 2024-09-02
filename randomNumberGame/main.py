@@ -3,7 +3,6 @@ import time
 import curses
 import threading
 from utils import *
-import curses
 
 
 def update_timer(stdscr, time_limit, stop_event):
